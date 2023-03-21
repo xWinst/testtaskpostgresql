@@ -1,6 +1,8 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { SequelizeModule } from "@nestjs/sequelize";
+import { UsersModule } from './users/users.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 @Module({
     imports: [
@@ -17,6 +19,8 @@ import { SequelizeModule } from "@nestjs/sequelize";
             models: [],
             autoLoadModels: true,
         }),
+        UsersModule,
+        ProfilesModule,
     ],
 })
 export class AppModule {}
