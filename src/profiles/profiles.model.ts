@@ -17,10 +17,10 @@ export class Profile extends Model<Profile, ProfileCreationAtrributes> {
     })
     id: number;
 
-    @Column({ type: DataType.STRING })
+    @Column({ type: DataType.STRING, allowNull: false })
     firstName: string;
 
-    @Column({ type: DataType.STRING })
+    @Column({ type: DataType.STRING, allowNull: false })
     lastName: string;
 
     @Column({ type: DataType.ENUM("male", "female"), allowNull: false })

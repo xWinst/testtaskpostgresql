@@ -6,6 +6,7 @@ import {
     Sequelize,
     BelongsTo,
     ForeignKey,
+    HasOne,
 } from "sequelize-typescript";
 import { Profile } from "profiles/profiles.model";
 
@@ -25,13 +26,13 @@ export class User extends Model<User, UserCreationAtrributes> {
     })
     id: number;
 
-    @Column({ type: DataType.STRING, unique: true })
+    @Column({ type: DataType.STRING, unique: true, allowNull: false })
     username: string;
 
-    @Column({ type: DataType.STRING, unique: true })
+    @Column({ type: DataType.STRING, unique: true, allowNull: false })
     email: string;
 
-    @Column({ type: DataType.ENUM("admin", "user") })
+    @Column({ type: DataType.ENUM("admin", "user"), allowNull: false })
     role: string;
 
     @Column({
