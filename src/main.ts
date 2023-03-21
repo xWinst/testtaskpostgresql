@@ -10,7 +10,7 @@ async function bootstrap() {
     const config = new DocumentBuilder()
         .setTitle("JS BACKEND TASK")
         .setDescription(
-            "API documentation for test task <a href=https://github.com/xWinst/testtaskpostgresql>Backend</a>"
+            "API documentation for test task. <a href=https://github.com/xWinst/testtaskpostgresql>Backend</a> <a href=https://testtaskpostgresql.onrender.com>Server</a>"
         )
         .build();
 
