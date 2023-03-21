@@ -28,13 +28,13 @@ export class UsersService {
                     const profile = await this.profileModel.create(profileDto, {
                         transaction,
                     });
+
                     await user.$set("profile", profile.id, { transaction });
 
                     return user;
                 }
             );
-
-            return result;
+            return result.reload();
         } catch (error) {
             throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
         }

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db_users
+    image: postgres:15.2-alpine
+    ports: 
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes: 
+      - ./db:/var/lib/postgresql/data/
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    restart: always
+
+  web:
+    container_name: server
+    build: 
+      context: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+     - ${PORT}:${PORT}
+     - ${DEBUG_PORT}:${DEBUG_PORT}
+    depends_on:
+     - db
+    restart: always 
+    command: npm run start:prod
